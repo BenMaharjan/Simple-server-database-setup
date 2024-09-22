@@ -2,6 +2,8 @@
 import express from "express"
 //import pool created in db/index.js
 import { pool } from "./db/index.js";
+// import cors package
+import cors from "cors";
 
 // creates express app
 const app = express();
@@ -11,6 +13,11 @@ const PORT = process.env.PORT;
 
 //enables parsing of JSON request bodies
 app.use(express.json());
+
+// enable CORS for all routes
+//app.use(cors());
+
+//app.use(express.static("public"));
 
 //starts  server listening to port number in env file
 app.listen(PORT, function() {

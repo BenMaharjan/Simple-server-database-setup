@@ -20,9 +20,15 @@ run the index.js file to create your database
   - make sure to run with dotenv to load your environemtn variables
 run the app.js to run your server. Shoul be able to see your database in postman 
  - make sure to run with dotenv to load your environemtn variables
-you can write a script to run the reset-database file
+write a script to run the reset-database file
   - "reset-database": "node -r dotenv/config db/scripts/reset-database.js"
 you can write a script to run app.js to start server
   - "start": "node -r dotenv/config app.js"
+
+Create a simple html file with a button and blockquote -clicking button should show workout plan fro database
+  create public folder. Create 3 files - index.html, styles.css, main.js
+  add a button and a blockquote in index.html. add classes for these elements
+  
+
 
 
