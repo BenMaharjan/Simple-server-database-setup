@@ -1,6 +1,6 @@
 
 document.querySelector(".GetPlan").addEventListener("click", function() {
-  fetch('/workout')
+  fetch('http://localhost:3000/workout')
       .then(response => {
           if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
@@ -8,24 +8,14 @@ document.querySelector(".GetPlan").addEventListener("click", function() {
           return response.json();
       })
       .then(data => {
-
-        console.log(data);
+        console.log(data);       
+        const showPlanElement = document.querySelector('.ShowPlan');
+        showPlanElement.textContent = JSON.stringify(data.data[0], null, 2);
         
-        //   const resultsElement = document.querySelector('.ShowPlan');
-        //   resultsElement.innerHTML = ''; // Clear previous results
-          
-        //   if (data.results && data.results.length > 0) {
-        //       data.results.forEach(row => {
-        //           const rowElement = document.createElement('p');
-        //           rowElement.textContent = JSON.stringify(row);
-        //           resultsElement.appendChild(rowElement);
-        //       });
-        //   } else {
-        //       resultsElement.textContent = 'No workout data found.';
-        //   }
-      })
+            })
+        })
       .catch(error => {
           console.error('Error:', error);
           document.querySelector('.ShowPlan').textContent = 'An error occurred while fetching the workout plan. Please try again later.';
       });
-});
+

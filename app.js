@@ -15,7 +15,7 @@ const PORT = process.env.PORT;
 app.use(express.json());
 
 // enable CORS for all routes
-//app.use(cors());
+app.use(cors());
 
 //app.use(express.static("public"));
 
