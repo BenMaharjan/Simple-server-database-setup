@@ -9,18 +9,31 @@ document.querySelector(".GetPlan").addEventListener("click", function() {
       })
       .then(data => {
         console.log(data); 
+        console.log(data.data[1]);
         
         const keys = Object.keys(data.data[0]);
         console.log(keys.join(" "));
 
-        document.querySelector(".tr1").textContent = keys[1].toUpperCase();
-        document.querySelector(".tr2").textContent = keys[2].toUpperCase();
+        for(let i=1;i<Array.length+2; i++) {
+        document.querySelector(`.tr${i}`).textContent = keys[i].toUpperCase();   
+        }
 
         const newRow = document.createElement("tr");
+
+        const newRowCol1 = document.createElement("td")
+        newRowCol1.textContent=JSON.stringify(data.data[1].exercise,null,2);
+        newRow.appendChild(newRowCol1)
+
+        const newRowCol2 = document.createElement("td")
+        newRowCol2.textContent=JSON.stringify(data.data[1].description,null,2);
+        newRow.appendChild(newRowCol2)
+
+
+
         const newRow2 = document.createElement("tr");
 
-        newRow.textContent = keys[1];
-        newRow2.textContent = keys[1];
+       // newRow.textContent = JSON.stringify(data.data[1],null,2);
+        newRow2.textContent = JSON.stringify(data.data[2].exercise)
 
         const table = document.querySelector(".workoutTable");
         table.appendChild(newRow);
