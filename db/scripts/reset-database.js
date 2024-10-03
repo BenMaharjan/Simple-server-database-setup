@@ -22,7 +22,8 @@ async function resetDatabase() {
             VALUES 
                 ('Chest', 'Bench press'),
                 ('Chest', 'Dumbell press'),
-                ('Bicep', 'Barbell curl');
+                ('Bicep', 'Barbell curl'),
+                ('Tricep', 'Tricep extension')
         `);
 
         console.log("Database reset successful");
