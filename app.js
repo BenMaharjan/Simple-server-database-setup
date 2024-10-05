@@ -39,4 +39,29 @@ app.get("/workout", async function(req,res) {
   });
 });
 
+//create a post request at the /workout endpoint
+app.post("/workout", async function(req,res) {
+
+  //destructuring. equivalent to
+  //const exercise = req.body.exercise;
+  //const description = req.body.description;
+  const {exercise, description} = req.body;
+
+  if(!exercise || !description) {
+    return res.status(400).json({error: "missing required fields"})
+  }
+    
+  try {
+
+    const result = await pool.query('INSERT INTO workout (exercise, description) VALUES ($1,$2) RETURNING *',
+    [exercise, description]);
+   
+    res.status(201).json(result.rows[0])
+  } catch (err) {
+    console.error("Error executing query", err.stack)
+    res.status(500).json({error: "Internal server error" })
+  }
+})
+
+
   
